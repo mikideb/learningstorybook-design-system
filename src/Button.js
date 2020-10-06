@@ -24,16 +24,17 @@ const APPEARANCES = {
   SECONDARY: 'secondary',
   SECONDARY_OUTLINE: 'secondaryOutline',
   TERTIARY: 'tertiary',
-  OUTLINE: 'outline',
+  OUTLINE: 'outline'
 };
 
 const SIZES = {
   SMALL: 'small',
-  MEDIUM: 'medium',
+  MEDIUM: 'medium'
 };
 
 const StyledButton = styled.button`
-  border: 0;
+  border: 10px solid red;
+  font-size: 20px;
   border-radius: 3em;
   cursor: pointer;
   display: inline-block;
@@ -43,7 +44,7 @@ const StyledButton = styled.button`
   text-align: center;
   text-decoration: none;
   transition: all 150ms ease-out;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   vertical-align: top;
   white-space: nowrap;
   user-select: none;
@@ -51,8 +52,8 @@ const StyledButton = styled.button`
   margin: 0;
   background: transparent;
 
-
-  font-size: ${props => (props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2)}px;
+  font-size: ${props =>
+    props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2}px;
   font-weight: ${typography.weight.extrabold};
   line-height: 1;
 
@@ -78,7 +79,7 @@ const StyledButton = styled.button`
     `}
 
   ${Text} {
-    transform: scale3d(1,1,1) translate3d(0,0,0);
+    transform: scale3d(1, 1, 1) translate3d(0, 0, 0);
     transition: transform 700ms ${easing.rubber};
     opacity: 1;
   }
@@ -157,7 +158,8 @@ const StyledButton = styled.button`
       background: ${color.primary};
       color: ${color.lightest};
 
-      ${!props.isLoading &&
+      ${
+        !props.isLoading &&
         `
           &:hover {
             background: ${darken(0.05, color.primary)};
@@ -171,7 +173,8 @@ const StyledButton = styled.button`
           &:focus:hover {
             box-shadow: ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
           }
-        `}
+        `
+      }
     `}
 
   ${props =>
@@ -180,7 +183,8 @@ const StyledButton = styled.button`
       background: ${color.secondary};
       color: ${color.lightest};
 
-      ${!props.isLoading &&
+      ${
+        !props.isLoading &&
         `
           &:hover {
             background: ${darken(0.05, color.secondary)};
@@ -194,7 +198,8 @@ const StyledButton = styled.button`
           &:focus:hover {
             box-shadow: ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
           }
-        `}
+        `
+      }
     `}
 
   ${props =>
@@ -203,7 +208,8 @@ const StyledButton = styled.button`
       background: ${color.tertiary};
       color: ${color.darkest};
 
-      ${!props.isLoading &&
+      ${
+        !props.isLoading &&
         `
           &:hover {
             background: ${darken(0.05, color.tertiary)};
@@ -217,7 +223,8 @@ const StyledButton = styled.button`
           &:focus:hover {
             box-shadow: ${rgba(color.tertiary, 0.2)} 0 8px 18px 0px;
           }
-        `}
+        `
+      }
     `}
 
   ${props =>
@@ -227,7 +234,8 @@ const StyledButton = styled.button`
       color: ${color.dark};
       background: transparent;
 
-      ${!props.isLoading &&
+      ${
+        !props.isLoading &&
         `
           &:hover {
             box-shadow: ${color.mediumdark} 0 0 0 1px inset;
@@ -250,12 +258,13 @@ const StyledButton = styled.button`
           0.2
         )} 0 8px 18px 0px;
           }
-        `};
+        `
+      };
     `};
 
-    ${props =>
-      props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
-      `
+  ${props =>
+    props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
+    `
         box-shadow: ${color.primary} 0 0 0 1px inset;
         color: ${color.primary};
 
@@ -270,16 +279,22 @@ const StyledButton = styled.button`
           color: ${color.lightest};
         }
         &:focus {
-          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
+          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(
+      color.primary,
+      0.4
+    )} 0 1px 9px 2px;
         }
         &:focus:hover {
-          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
+          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(
+      color.primary,
+      0.2
+    )} 0 8px 18px 0px;
         }
       `};
 
-    ${props =>
-      props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
-      `
+  ${props =>
+    props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
+    `
         box-shadow: ${color.secondary} 0 0 0 1px inset;
         color: ${color.secondary};
 
@@ -302,7 +317,6 @@ const StyledButton = styled.button`
             ${rgba(color.secondary, 0.2)} 0 8px 18px 0px;
         }
       `};
-
 `;
 
 const ButtonLink = StyledButton.withComponent('a');
@@ -310,9 +324,11 @@ const ButtonLink = StyledButton.withComponent('a');
 const applyStyle = ButtonWrapper => {
   return (
     ButtonWrapper &&
-    StyledButton.withComponent(({ containsIcon, isLoading, isUnclickable, ...rest }) => (
-      <ButtonWrapper {...rest} />
-    ))
+    StyledButton.withComponent(
+      ({ containsIcon, isLoading, isUnclickable, ...rest }) => (
+        <ButtonWrapper {...rest} />
+      )
+    )
   );
 };
 
@@ -332,7 +348,9 @@ export function Button({
     </Fragment>
   );
 
-  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
+  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [
+    ButtonWrapper
+  ]);
 
   let SelectedButton = StyledButton;
   if (ButtonWrapper) {
@@ -370,7 +388,7 @@ Button.propTypes = {
   */
   containsIcon: PropTypes.bool,
   size: PropTypes.oneOf(Object.values(SIZES)),
-  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 };
 
 Button.defaultProps = {
@@ -382,5 +400,5 @@ Button.defaultProps = {
   isUnclickable: false,
   containsIcon: false,
   size: SIZES.MEDIUM,
-  ButtonWrapper: undefined,
+  ButtonWrapper: undefined
 };
